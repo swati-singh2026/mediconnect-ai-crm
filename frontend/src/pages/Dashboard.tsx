@@ -1,5 +1,9 @@
 const Dashboard = () => {
-  return <h1>Dashboard</h1>;
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-slate-100">
+      <h1 className="text-4xl font-bold text-slate-800">MediConnect AI CRM</h1>
+    </div>
+  );
 };
 
 export default Dashboard;

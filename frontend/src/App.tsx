@@ -9,7 +9,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Dashboard />} />
-        <Route path="/LogInteraction" element={<LogInteraction />} />
+        <Route path="/log-interaction" element={<LogInteraction />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
