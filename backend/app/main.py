@@ -1,32 +1,28 @@
-from typing import TYPE_CHECKING
+from fastapi import FastAPI
 
-if TYPE_CHECKING:
-    # For type checkers / linters, import the real FastAPI
-    from fastapi import FastAPI  # type: ignore[import]
-else:
-    try:
-        from fastapi import FastAPI
-    except Exception:
-        # Provide a minimal runtime stub so editors/linters don't complain when
-        # FastAPI isn't available. Installing FastAPI is still required to
-        # actually run the application: pip install fastapi uvicorn
-        class FastAPI:  # pragma: no cover - stub for dev environment
-            def __init__(self, *args, **kwargs):
-                pass
+from app.api.interaction import router as interaction_router
+from app.config.settings import settings
+from app.database import models
+from app.database.database import Base, engine
 
-            def get(self, *args, **kwargs):
-                def decorator(f):
-                    return f
-                return decorator
+# Create database tables
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
-    title="MediConnect AI CRM",
-    version="1.0.0",
-    description="AI-First CRM for Healthcare Professionals"
+    title=settings.APP_NAME,
+    version=settings.APP_VERSION,
+    description="AI-First CRM for Healthcare Professionals",
 )
+
+# Register API routes
+app.include_router(interaction_router)
+
 
 @app.get("/")
 def home():
     return {
-        "message": "MediConnect AI CRM Backend Running 🚀"
+        "message": f"{settings.APP_NAME} Backend Running 🚀",
+        "version": settings.APP_VERSION,
+        "status": "Healthy",
     }
+Base.metadata.create_all(bind=engine)
