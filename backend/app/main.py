@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 
+from app.api.ai import router as ai_router
 from app.api.interaction import router as interaction_router
 from app.config.settings import settings
 from app.database import models
@@ -16,6 +17,7 @@ app = FastAPI(
 
 # Register API routes
 app.include_router(interaction_router)
+app.include_router(ai_router)
 
 
 @app.get("/")
