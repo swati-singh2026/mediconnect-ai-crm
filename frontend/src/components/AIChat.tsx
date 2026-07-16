@@ -1,10 +1,25 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import type { RootState } from "../store/store";
+import { setCurrentChat } from "../features/interaction/interactionSlice";
 
 const AIChat = () => {
   const [message, setMessage] = useState("");
 
+  const dispatch = useDispatch();
+
+  const currentChat = useSelector(
+    (state: RootState) => state.interaction.currentChat,
+  );
+
   const handleSend = () => {
+    if (!message.trim()) return;
+
+    dispatch(setCurrentChat(message));
+
     console.log("Send:", message);
+
     setMessage("");
   };
 
@@ -25,6 +40,14 @@ const AIChat = () => {
       >
         Send
       </button>
+
+      {/* Redux State Preview */}
+      <div className="mt-6 border-t pt-4">
+        <h3 className="font-semibold text-gray-700">Current Chat</h3>
+        <p className="mt-2 text-gray-600">
+          {currentChat || "No chat sent yet."}
+        </p>
+      </div>
     </div>
   );
 };
