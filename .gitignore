@@ -1,14 +1,16 @@
 # Node
-frontend/node_modules
-frontend/dist
+frontend/node_modules/
+frontend/dist/
 
 # Python
-backend/.venv
-backend/__pycache__
-backend/*.pyc
+backend/venv/
+backend/.venv/
+backend/__pycache__/
+*.py[cod]
 
 # Environment
 .env
+backend/.env
 .env.local
 
 # OS
@@ -16,5 +18,5 @@ backend/*.pyc
 Thumbs.db
 
 # IDE
-.vscode
-.idea
+.vscode/
+.idea/

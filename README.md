@@ -1,12 +1,12 @@
 # 🩺 MediConnect AI CRM
 
-AI-first Healthcare Professional (HCP) CRM platform powered by **React, FastAPI, LangGraph, LangChain, and Groq LLM**.
+AI-first Healthcare Professional (HCP) CRM platform powered by **React, FastAPI, LangChain, LangGraph, and Groq LLM**.
 
 ---
 
 # 🚀 Project Overview
 
-MediConnect AI CRM is an AI-powered Customer Relationship Management system designed for Healthcare Professionals (HCPs). It enables medical representatives to log interactions, manage doctors, and leverage AI to generate summaries and recommendations.
+MediConnect AI CRM is an AI-powered Customer Relationship Management system designed for Healthcare Professionals (HCPs). It enables medical representatives to manage doctor interactions, maintain CRM records, and leverage AI to generate professional interaction summaries and follow-up recommendations.
 
 ---
 
@@ -30,7 +30,7 @@ MediConnect AI CRM is an AI-powered Customer Relationship Management system desi
 
 - LangChain
 - LangGraph
-- Groq LLM (Gemma2-9B-IT)
+- Groq LLM (Llama 3.1 8B Instant)
 
 ---
 
@@ -52,7 +52,6 @@ mediconnect-ai-crm/
 │   │   ├── tools/
 │   │   └── main.py
 │   │
-│   ├── .env
 │   ├── .env.example
 │   ├── requirements.txt
 │   └── mediconnect.db
@@ -72,28 +71,45 @@ mediconnect-ai-crm/
 - ✅ SQLAlchemy Integration
 - ✅ SQLite Database
 - ✅ Interaction CRUD APIs
+- ✅ AI Interaction Summary API
+- ✅ Groq LLM Integration
+- ✅ LangChain Prompt Templates
+- ✅ Healthcare CRM AI Service
 - ✅ Swagger Documentation
 - ✅ Environment Configuration
 
 ## Planned
 
 - 🤖 AI Chat Assistant
-- 🧠 AI Interaction Summary
 - 👨‍⚕️ HCP Management
 - 📅 Interaction Timeline
 - 📊 Dashboard & Analytics
 - 🔐 Authentication
+- 🌐 React Frontend
+- 🔄 LangGraph Multi-Agent Workflow
 
 ---
 
 # 📌 API Endpoints
 
-| Method | Endpoint             | Description          |
-| ------ | -------------------- | -------------------- |
-| GET    | `/`                  | Health Check         |
-| POST   | `/interactions/`     | Create Interaction   |
-| GET    | `/interactions/`     | Get All Interactions |
-| PUT    | `/interactions/{id}` | Update Interaction   |
+| Method | Endpoint             | Description                     |
+| ------ | -------------------- | ------------------------------- |
+| GET    | `/`                  | Health Check                    |
+| POST   | `/interactions/`     | Create Interaction              |
+| GET    | `/interactions/`     | Get All Interactions            |
+| PUT    | `/interactions/{id}` | Update Interaction              |
+| POST   | `/ai/summary`        | Generate AI Interaction Summary |
+
+---
+
+# 🤖 AI Summary Response
+
+The AI generates structured healthcare CRM summaries including:
+
+- Professional Summary
+- Next Action
+- Priority Level
+- Suggested Follow-up
 
 ---
 
@@ -116,13 +132,25 @@ mediconnect-ai-crm/
 - CRUD APIs
 - Swagger API testing
 
-## ⏳ Upcoming
+## ✅ Hour 3
 
-- Groq API Integration
-- LangGraph Workflow
-- AI Agent
+- Groq API integration
+- LangChain ChatGroq configuration
+- Prompt engineering
+- AI Service implementation
+- AI Interaction Summary API
+- Healthcare CRM AI assistant
+
+---
+
+# 🚀 Upcoming
+
 - React Frontend
 - Dashboard UI
+- LangGraph Workflow
+- Multi-Agent AI System
+- Authentication
+- Deployment
 
 ---
 
