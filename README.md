@@ -1,12 +1,32 @@
 # 🩺 MediConnect AI CRM
 
-AI-first Healthcare Professional (HCP) CRM platform powered by **React, FastAPI, LangChain, LangGraph, and Groq LLM**.
+An AI-first Healthcare Professional (HCP) CRM platform built using **React, FastAPI, LangGraph, LangChain, Redux Toolkit, and Groq LLM**.
 
 ---
 
 # 🚀 Project Overview
 
-MediConnect AI CRM is an AI-powered Customer Relationship Management system designed for Healthcare Professionals (HCPs). It enables medical representatives to manage doctor interactions, maintain CRM records, and leverage AI to generate professional interaction summaries and follow-up recommendations.
+MediConnect AI CRM enables medical representatives to record doctor interactions, manage HCP engagement, and leverage AI to summarize conversations, retrieve interaction history, and generate intelligent follow-up recommendations.
+
+---
+
+# 🏗 Architecture
+
+```
+React Frontend
+      │
+      ▼
+FastAPI Backend
+      │
+      ▼
+LangGraph Workflow
+      │
+      ▼
+AI Tools
+      │
+      ▼
+SQLite Database
+```
 
 ---
 
@@ -15,14 +35,16 @@ MediConnect AI CRM is an AI-powered Customer Relationship Management system desi
 ## Frontend
 
 - React
+- TypeScript
 - Redux Toolkit
-- Tailwind CSS _(Planned)_
+- React Router
+- Tailwind CSS
 
 ## Backend
 
 - FastAPI
 - SQLAlchemy
-- SQLite _(Development)_
+- SQLite
 - Pydantic
 - Uvicorn
 
@@ -34,7 +56,7 @@ MediConnect AI CRM is an AI-powered Customer Relationship Management system desi
 
 ---
 
-# 📂 Project Structure
+# 📂 Folder Structure
 
 ```
 mediconnect-ai-crm/
@@ -46,114 +68,233 @@ mediconnect-ai-crm/
 │   │   ├── config/
 │   │   ├── core/
 │   │   ├── database/
+│   │   ├── graph/
 │   │   ├── prompts/
 │   │   ├── schemas/
 │   │   ├── services/
 │   │   ├── tools/
 │   │   └── main.py
 │   │
-│   ├── .env.example
 │   ├── requirements.txt
+│   ├── .env.example
 │   └── mediconnect.db
 │
 ├── frontend/
+│   ├── src/
+│   │   ├── app/
+│   │   ├── components/
+│   │   ├── features/
+│   │   ├── pages/
+│   │   ├── services/
+│   │   ├── store/
+│   │   └── App.tsx
+│
 ├── README.md
 └── PROJECT_NOTES.md
 ```
 
 ---
 
-# ✨ Features
+# 🤖 How LangGraph Works
 
-## Current
+The AI workflow is implemented using LangGraph.
 
-- ✅ FastAPI Backend
-- ✅ SQLAlchemy Integration
-- ✅ SQLite Database
-- ✅ Interaction CRUD APIs
-- ✅ AI Interaction Summary API
-- ✅ Groq LLM Integration
-- ✅ LangChain Prompt Templates
-- ✅ Healthcare CRM AI Service
-- ✅ Swagger Documentation
-- ✅ Environment Configuration
+```
+User Input
+      │
+      ▼
+Intent Detection
+      │
+      ▼
+Router
+      │
+      ▼
+Selected Tool
+      │
+      ▼
+Response
+```
 
-## Planned
+Current workflow includes:
 
-- 🤖 AI Chat Assistant
-- 👨‍⚕️ HCP Management
-- 📅 Interaction Timeline
-- 📊 Dashboard & Analytics
-- 🔐 Authentication
-- 🌐 React Frontend
-- 🔄 LangGraph Multi-Agent Workflow
+- Intent Detection
+- Intent Routing
+- Tool Execution
+- Response Generation
+
+---
+
+# ▶️ How to Run
+
+## Backend
+
+```bash
+cd backend
+
+venv\Scripts\activate
+
+pip install -r requirements.txt
+
+uvicorn app.main:app --reload
+```
+
+Backend runs at:
+
+```
+http://127.0.0.1:8000
+```
+
+Swagger UI:
+
+```
+http://127.0.0.1:8000/docs
+```
+
+---
+
+## Frontend
+
+```bash
+cd frontend
+
+npm install
+
+npm run dev
+```
+
+Frontend runs at:
+
+```
+http://localhost:5173
+```
 
 ---
 
 # 📌 API Endpoints
 
-| Method | Endpoint             | Description                     |
-| ------ | -------------------- | ------------------------------- |
-| GET    | `/`                  | Health Check                    |
-| POST   | `/interactions/`     | Create Interaction              |
-| GET    | `/interactions/`     | Get All Interactions            |
-| PUT    | `/interactions/{id}` | Update Interaction              |
-| POST   | `/ai/summary`        | Generate AI Interaction Summary |
+| Method | Endpoint             | Description          |
+| ------ | -------------------- | -------------------- |
+| GET    | `/`                  | Health Check         |
+| POST   | `/interactions/`     | Create Interaction   |
+| GET    | `/interactions/`     | Get All Interactions |
+| PUT    | `/interactions/{id}` | Update Interaction   |
+| POST   | `/ai/summary`        | Generate AI Summary  |
 
 ---
 
-# 🤖 AI Summary Response
+# 🧰 AI Tools
 
-The AI generates structured healthcare CRM summaries including:
+The application currently includes five AI tools.
 
-- Professional Summary
+### 1. Log Interaction
+
+Logs doctor interactions and extracts structured information.
+
+### 2. Edit Interaction
+
+Updates existing interaction details.
+
+### 3. Search Interaction
+
+Retrieves previous interaction history.
+
+### 4. Summarize HCP
+
+Generates an overall summary of doctor interactions.
+
+### 5. Generate Follow-up
+
+Suggests:
+
 - Next Action
-- Priority Level
-- Suggested Follow-up
+- Questions to Ask
+- Material to Carry
 
 ---
 
 # 📈 Development Progress
 
-## ✅ Hour 1
+## ✅ Project Foundation
 
 - Project setup
-- Backend architecture
-- FastAPI configuration
-- LangChain installation
-- LangGraph installation
-- Groq SDK installation
+- Git repository initialization
+- Frontend and backend architecture
+- Environment configuration
+- Project documentation
 
-## ✅ Hour 2
+---
 
-- SQLAlchemy setup
-- SQLite integration
-- Interaction model
+## ✅ Backend Development
+
+- FastAPI application
+- SQLAlchemy integration
+- SQLite database
 - CRUD APIs
-- Swagger API testing
+- Swagger documentation
+- Pydantic schemas
 
-## ✅ Hour 3
+---
 
-- Groq API integration
-- LangChain ChatGroq configuration
-- Prompt engineering
-- AI Service implementation
-- AI Interaction Summary API
+## ✅ AI Integration
+
+- Groq LLM integration
+- LangChain prompt templates
+- AI interaction summary service
 - Healthcare CRM AI assistant
 
 ---
 
-# 🚀 Upcoming
+## ✅ Frontend Development
 
-- React Frontend
-- Dashboard UI
-- LangGraph Workflow
-- Multi-Agent AI System
-- Authentication
+- React application
+- TypeScript setup
+- Tailwind CSS
+- HCP Interaction page
+- Structured interaction form
+- AI Chat interface
+
+---
+
+## ✅ LangGraph Workflow
+
+- Graph state
+- Intent detection
+- Router
+- Tool execution
+- Response generation
+
+---
+
+## ✅ AI Tooling
+
+- Log Interaction
+- Edit Interaction
+- Search Interaction
+- Summarize HCP
+- Generate Follow-up
+
+---
+
+## ✅ State Management
+
+- Redux Toolkit
+- Interaction slice
+- Current chat state
+- Loading state
+- Error handling
+
+---
+
+## 🚀 Upcoming
+
+- Connect frontend with backend APIs
+- Integrate LangGraph tools with live database
+- Authentication & authorization
+- Dashboard and analytics
 - Deployment
 
 ---
 
 # 📄 License
 
-This project is being developed for learning, portfolio, and demonstration purposes.
+This project is developed for learning, portfolio, and demonstration purposes.
